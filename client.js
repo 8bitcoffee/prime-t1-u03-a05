@@ -13,6 +13,13 @@
 // 2. board games
 // 3. painting
 // Total hobbies: 3
+console.log('\n---Question 1---');
+let hobbies = ['dancing','backpacking','jewelry-making','motorcycles'];
+for (let hobby of hobbies) {
+    console.log(hobby);
+}
+console.log(`Total hobbies: ${hobbies.length}`);
+// console.log('Total hobbies:', hobbies.length);
 
 /**
  * #2 Colors
@@ -30,6 +37,16 @@
 // green, red, teal, orange, teal
 // Teal was found 2 times
 
+console.log('\n---Question 2---');
+let colors = ['green','teal','orange','aqua','teal','pink'];
+let tealCount = 0;
+for (let i = 0; i < colors.length; i += 1){
+    if (colors[i] === 'teal'){
+        tealCount += 1;
+    }
+}
+console.log(colors);
+console.log(`Teal was found in colors ${tealCount} times`);
 
 /**
  * #3 Even & Odd
@@ -47,6 +64,21 @@
 // Odd 3, 7, 11
 // Even 2, 8, 4, 2
 
+console.log('\n---Question 3---');
+let numbers = [1,2,3,4,5,6,7,8,9,10];
+let oddNumbers = [];
+let evenNumbers = [];
+for (let i = 0; i < numbers.length; i += 1){
+    if (numbers[i] % 2 === 0){
+        evenNumbers.push(numbers[i]);
+    }
+    else {
+        oddNumbers.push(numbers[i]);
+    }
+} 
+console.log('original array:', numbers);
+console.log('The even numbers in the array:', evenNumbers);
+console.log('The odd numbers in the array:', oddNumbers);
 
 /**
  * #4 Flipping Switches
@@ -62,6 +94,14 @@
 // true, false, true, true
 // Toggled false, true, false, false
 
+console.log('\n---Question 4---');
+let booleanValues = [false, true, true, false];
+let toggled = [];
+for (let value of booleanValues){
+    value ? toggled.push(false) : toggled.push(true);
+}
+console.log('original array:', booleanValues);
+console.log('toggled array:', toggled);
 
 /**
  * #5 (STRETCH) Remove 0's
@@ -77,6 +117,16 @@
 // Example output
 // Before loop 3, 0, 2, 8, 0, 0, 0
 // After loop 3, 0, 2, 8
+
+console.log('\n---Question 5---');
+
+let newNumbs = [17,5,0,8,9,0,0,0];
+console.log('Before loop:',newNumbs);
+
+while (newNumbs.lastIndexOf(0) === newNumbs.length - 1){
+    newNumbs.pop();
+}
+console.log('After loop:',newNumbs);
 
 
 /**
@@ -95,3 +145,10 @@
 // Example output
 // 5, 1, 8, 2, 9, 1, 4, 5, 0
 // Greatest Position Distance: 7
+
+console.log('\n---Question 7---');
+let largish = [5,11,3,7,8,11,18,2,5];
+
+// NOPE
+
+
