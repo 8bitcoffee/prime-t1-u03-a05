@@ -147,11 +147,10 @@ console.log('After loop:',newNumbs);
 // Greatest Position Distance: 7
 
 console.log('\n---Question 7---');
-let largish = [5,11,3,7,8,11,18,2,5];
 
-// NOPE
 
-// Solution from class after the group session ended
+console.log("\n---Solution from class---");
+
 let largeArray = [0, 2, 2, 7, 4, 1, 7, 8];
 let distance = 0
 let numberForDistance;
@@ -167,3 +166,54 @@ for (let i = 0; i < largeArray.length; i += 1) {
 console.log(`Number with greatest distance is ${numberForDistance} with a distance of ${distance}`)
 
 
+console.log("\n---My solution---");
+
+// My later solution that allows for > 2 repetitions of a number, ties, and no repetitions!
+// Change the value of 'largish' to test!
+
+let largish = [5,11,3,7,8,11,18,2,5,11]; // Made new array to work with and test
+
+let timesInArray = {}; // Empty object for collecting repetitions of a number
+let greatestDistance = 1; // Set initial min distance for repetitions to 1
+let greatestDistanceNum = []; // Used array for the number with the greatest distance in case of ties
+let duplicates = false; // Boolean to make sure that a duplicate number exists
+
+for (let num of largish){ // Iterating through the array and capturing how many times each number is there
+    num in timesInArray ? timesInArray[num] += 1 : timesInArray[num] = 1;
+}
+
+for (let [num,val] of Object.entries(timesInArray)){ // Iterating through the object to get the numbers that have repetitions
+    if (val > 1){
+        duplicates = true; // Boolean flips true because a duplicate is detected
+        let numDistance = largish.lastIndexOf(Number(num)) - largish.indexOf(Number(num)); // Finding max distance for each duplicate
+        if (numDistance > greatestDistance){ // Setting the new largest distance and corresponding number if that distance is higher
+            greatestDistance = numDistance;
+            greatestDistanceNum = [num];
+        }
+        else if (numDistance === greatestDistance){ // Adding the number to the array since there was a tie for greatest distance
+            greatestDistanceNum.push(num);
+        }
+    }
+}
+
+
+// Console statements depending on the amount of numbers with greatest distance
+
+if (greatestDistanceNum.length === 1){ // For a clear winner
+    console.log("\nArray used: ", largish);
+    console.log(`Number with greatest distance is ${greatestDistanceNum} with a distance of ${greatestDistance}`);
+}
+else if (greatestDistanceNum.length > 1){ // For a tie
+    console.log("\nArray used: ", largish);
+    console.log("There was a tie for the greatest distance!");
+    console.log("Numbers tied were: ", greatestDistanceNum);
+    console.log(`The greatest distance was ${greatestDistance}`);
+}
+else if (duplicates === false){ // No repeating number
+    console.log("\nArray used: ", largish);
+    console.log("No number was repeated!");
+}
+else { // Something else weird happened. Probably an indexing error resulting in a negative
+    console.log("\nArray used: ", largish);
+    console.log("Something went wrong :(");
+}
