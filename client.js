@@ -151,4 +151,19 @@ let largish = [5,11,3,7,8,11,18,2,5];
 
 // NOPE
 
+// Solution from class after the group session ended
+let largeArray = [0, 2, 2, 7, 4, 1, 7, 8];
+let distance = 0
+let numberForDistance;
+
+for (let i = 0; i < largeArray.length; i += 1) {
+    let currentNumber = largeArray[i];
+    let nextIndex = largeArray.indexOf(currentNumber, i + 1);
+    if (nextIndex > 0 && nextIndex - i > distance) {
+        numberForDistance = currentNumber;
+        distance = nextIndex - i;
+    }
+}
+console.log(`Number with greatest distance is ${numberForDistance} with a distance of ${distance}`)
+
 
